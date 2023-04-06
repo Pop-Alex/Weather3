@@ -3,6 +3,8 @@ import './styleComp.css'
 import {FcSearch} from 'react-icons/fc'
 import {WeahterContext} from '../context'
 import {BiTrashAlt} from 'react-icons/bi'
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css/sea-green';
 const Details = () => {
   const {location,setLocation,searchLocation,data,fav,removefav} = useContext( WeahterContext)
   return (
@@ -26,17 +28,42 @@ const Details = () => {
               <span>Humidity</span>
               <span>{data.main ? <p>{data.main.humidity}%</p> : null }</span>
             </li>
+            <li>
+              <span>Wind</span>
+              <span>{data.main ? <p>{data.wind.speed} MPH</p> : null }</span>
+            </li>
           </ul>
           <div className="underline"></div>
           <h2>Favorite</h2>
+
+          <Splide options={{ perPage:2,
+        drag:"free",
+        gap:"6rem"
+      
+        }}>
+
           {fav.map((item,idx)=>{
           return(
-            <div key={idx}>
+            <SplideSlide key={idx} >
+            <div  className='inner-favorite'>
             <p>{item.name}</p>
-            <button onClick={()=>removefav(item.id)}><BiTrashAlt/> </button>
+            <div className='temp-icon'>
+<h1>{item.main.temp.toFixed()}°C</h1> 
+            <div>
+       <img
+              src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+              alt="icon" className='icon'
+            /> 
+     </div>
+              
+            </div>
+            
+            <button onClick={()=>removefav(item.id)} className='icon-details-trash'><BiTrashAlt/> </button>
           </div>
+          </SplideSlide>
           )
         })}
+        </Splide>
         </div>
       </div>
     </div>

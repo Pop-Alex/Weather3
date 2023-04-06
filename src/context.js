@@ -9,9 +9,11 @@ export const WeahterContext = createContext()
     const [data,setData] = useState({})
     const [fav,setFav] = useState([])
     const [back,setBack] = useState()
+    const [forecast, setForecast] = useState([]);
     
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&units=metric&appid=d4aa1045d463622f5b83f1df0aa53b27`
- 
+    const forecas = `https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=d4aa1045d463622f5b83f1df0aa53b27
+`
     
     const searchLocation = (e)=>{
       if(e.key === 'Enter' ){
@@ -19,15 +21,21 @@ export const WeahterContext = createContext()
           setData(response.data)
           console.log(response.data);
           if(response.data.main.temp < 15)  setBack(cold)
-          else setBack(hot)
+           else setBack(hot)
+           setForecast(response.data.daily)
         })
         setLocation('')
       }
-    }
+  };
     
+    useEffect(()=>{
+      setData(data)
+    },[])
+
     useEffect(() => {
 		const watherFavourites = JSON.parse(
 			localStorage.getItem('weather-app-favourites')
+      
 		);
 
 		if (watherFavourites) {
@@ -62,6 +70,7 @@ export const WeahterContext = createContext()
         fav,
         handelFav,
         removefav,
+        forecast,
     }
 
   return (
