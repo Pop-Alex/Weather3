@@ -37,12 +37,16 @@ code {
 }
 .App{
 background: no-repeat center center/cover;
-height: 1230px;
+height: 750px;
 
 
 
 }
-
+.map {
+  width: 50%;
+  height: 20%;
+  z-index: 11111;
+}
 @media screen and (max-height:300px) {
   .App{
     min-height: 40em;

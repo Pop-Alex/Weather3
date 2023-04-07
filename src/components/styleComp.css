@@ -161,7 +161,24 @@
 .icon-details-trash:hover{
     color: red;
 }
-
+.map{
+    width: 350px;
+        height: 250px;
+        padding: 5px;
+    margin-left:-55px ;
+        
+}
+.leaflet-container {
+    height: 300px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 5px 10px 10px black;
+}
+.map-container{
+   
+    height: 150px;
+    
+}
 /*responsive*/
 
 @media screen and (max-width:600px) {

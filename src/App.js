@@ -2,15 +2,18 @@ import React, { Component, useContext } from 'react'
 import Main from './components/Main'
 import Details from './components/Details'
 import {WeahterContext} from './context'
+import Loading from './components/Loading'
+
 function App() {
-  const {back} = useContext(WeahterContext)
+  const {back,loading} = useContext(WeahterContext)
   return (
     <div className="App" style={{ backgroundImage: `url(${back}) ` }}>
       
-        <Main/>
+        
+        <Main/> 
+        
       
-     
-<Details/>  
+        <Details/>  
      
      
     </div>
