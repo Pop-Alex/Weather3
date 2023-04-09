@@ -17,9 +17,10 @@ const Details = () => {
       </div>
       <div className="underline"></div>
       <div className="info-section">
+        
         <h2>Details</h2>
         <div className="info">
-          <ul className='info-det'>
+        <ul className='info-det'>
             <li>
               <span>Fells like</span>
               <span>{data.main ? <p>{data.main.feels_like.toFixed()} C</p> : null}</span>
@@ -32,8 +33,11 @@ const Details = () => {
               <span>Wind</span>
               <span>{data.main ? <p>{data.wind.speed} MPH</p> : null }</span>
             </li>
-          </ul>
+          </ul> 
+          
+
           <div className="underline"></div>
+
           <h2>Favorite</h2>
 
           <Splide options={{ perPage:2,
@@ -46,15 +50,15 @@ const Details = () => {
           return(
             <SplideSlide key={idx} >
             <div  className='inner-favorite'>
-            <p>{item.name}</p>
+              <p>{item.name}</p>
             <div className='temp-icon'>
-<h1>{item.main.temp.toFixed()}°C</h1> 
+              <h1>{item.main.temp.toFixed()}°C</h1> 
             <div>
-       <img
+              <img
               src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
               alt="icon" className='icon'
-            /> 
-     </div>
+              /> 
+            </div>
               
             </div>
             

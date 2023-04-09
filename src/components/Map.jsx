@@ -9,8 +9,7 @@ const Map = ({lat,lon}) => {
    <div className='map-container'>
    <MapContainer center={[lat, lon]} zoom={12} scrollWheelZoom={false}>
     <div className='inner-map'>
-      <p>.
-      </p>
+      
   <TileLayer
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

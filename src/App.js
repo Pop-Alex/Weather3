@@ -5,17 +5,11 @@ import {WeahterContext} from './context'
 import Loading from './components/Loading'
 
 function App() {
-  const {back,loading} = useContext(WeahterContext)
+  const {back,loading,data} = useContext(WeahterContext)
   return (
     <div className="App" style={{ backgroundImage: `url(${back}) ` }}>
-      
-        
-        <Main/> 
-        
-      
-        <Details/>  
-     
-     
+       <Main/>
+       <Details/>  
     </div>
   );
 }

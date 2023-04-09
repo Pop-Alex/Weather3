@@ -6,25 +6,30 @@ import {WeahterContext} from '../context'
 import {AiOutlineHeart} from 'react-icons/ai'
 import Spinner from 'react-bootstrap/Spinner';
 import Loading from './Loading'
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+
+import CurrentLocation from './CurrentLocation'
 
 
 const Main = () => {
-  const {data,handelFav,loading,lat,long,currentLoc} = useContext( WeahterContext)
-  if(loading){
-    return <h1>Loading</h1>;
-  }
+  const {data,handelFav,loading,lat,long,getCurretnLocation} = useContext( WeahterContext)
   
+   if(loading){
+    return <Spinner animation="border" role="status" className='spinner'>
+      <span className="visually-hidden">Searching....</span>
+    </Spinner>;
+  }
   return (
     
     <div className='main'>
-      {data.weather ? null : <h1>{currentLoc?.name}</h1>  }
+      
+      {data.weather ? null : 
+        <CurrentLocation/>
+        }
+        
       
       <div className="main-info">
         <div className='temp'>
           {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
-          
         </div>
       
       <div className='name'>
@@ -43,17 +48,15 @@ const Main = () => {
     
       {data.name && 
       <div className="forecast">
-        
-        <Forecast/>
-        <Forecast/>
         <Forecast/>
       </div>
-}   
+      }   
        {data.weather ? <div className='map'>
      <Map lat={data.coord.lat} lon={data.coord.lon}/>
-
      </div>  : null}
     </div>
+
+
   )
 }
 

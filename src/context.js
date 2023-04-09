@@ -1,4 +1,4 @@
-import React, { createContext,useState,useEffect } from 'react'
+import React, { createContext,useState,useEffect,useCallback } from 'react'
 import cold from './assests/cold.jpg'
 import hot from './assests/hot.jpg'
 import axios from 'axios'
@@ -11,28 +11,27 @@ export const WeahterContext = createContext()
     const [back,setBack] = useState()
     const [forecast, setForecast] = useState([]);
     const [loading ,setLoading] = useState(false)
-     const [lat, setLat] = useState([]);
-    const [long, setLong] = useState([]);
+     const [lat, setLat] = useState();
+    const [long, setLong] = useState();
     const[error,setError] = useState('')
     const [currentLoc,setCurrentLoc]  =useState()
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&units=metric&appid=d4aa1045d463622f5b83f1df0aa53b27`
-    const forecas = `https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=d4aa1045d463622f5b83f1df0aa53b27
+    const forecas = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=d4aa1045d463622f5b83f1df0aa53b27&units=metric
 `
 
-
+  
  useEffect(()=>{
+      
       getUserCoordinates()
       setData(data)
       
-      getCurretnLocation()
     },[lat,long])
 
-    console.log(lat,long)
 
+    
+   
     const getUserCoordinates = () => {
-   if (!navigator.geolocation) {
-     setError('Geolocation API is not available in your browser!')
-   } else {
+   
      navigator.geolocation.getCurrentPosition((position) => {
        const { coords } = position;
        setLat(coords.latitude);
@@ -40,32 +39,40 @@ export const WeahterContext = createContext()
      }, (error) => {
        setError('Something went wrong getting your position!')
      })
-   }
+   
   }
 
-
-  const getCurretnLocation = async ()=>{
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d4aa1045d463622f5b83f1df0aa53b27`)
-        const data = await res.json()
-        setCurrentLoc(data)
-    }
-    
+  
+  // const getCurretnLocation =useCallback( async ()=>{
+  //       const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d4aa1045d463622f5b83f1df0aa53b27&units=metric`)
+  //       const datas = await res.json()
+  //       setCurrentLoc(datas)
+  //   }
+  // )
     
     const searchLocation = (e)=>{
       setLoading(true)
       if(e.key === 'Enter' ){
         axios.get(url).then((response)=>{
           setData(response.data)
+          
           console.log(response.data);
           if(response.data.main.temp < 15)  setBack(cold)
            else setBack(hot)
+           
            setLoading(false)
         })
         setLocation('')
+        axios.get(forecas).then((response)=>{
+       setForecast(response.data)
+        
+        console.log(response.data);
+      })
       }
   };
     
-
+  
+    
    
     
     useEffect(() => {
@@ -113,7 +120,8 @@ export const WeahterContext = createContext()
         forecast,
         loading,
         lat,long
-        ,currentLoc
+        ,currentLoc,
+        
     }
 
   return (

@@ -1,4 +1,10 @@
 /*main*/
+.spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
 .main{
     display: flex;
     flex-direction: column;
@@ -23,23 +29,37 @@
 .forecast{
     width: 100%;
         height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        place-items: center;
-        
-}
-.forecast-box{
-        border-radius: 15px;
-        background-color: rgba(0, 0, 0, 0.5);
        display: flex;
-       justify-content: center;
-       align-items: center;
-        gap: 10px;
-        width: 120px;
-        height: 120px;
-        margin: 20px;
-        flex: 80%;
+       flex-direction: column;
+       justify-content: center;   
+}
+.forecast-info{
+    background-color: rgba(120, 120,120, 0.25);
+    padding: 7px;
+    border-radius: 15px;
+}
+.day-temp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.forecast-temps .max {
+    font-size: 11px;
 
+}
+.forecast-temps  .min {
+    font-size: 11px;
+
+}
+
+.forecast-temps{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .main h1{
@@ -187,7 +207,6 @@
         width: 100%;
         overflow: hidden;
         
-        
     }
     .main{
         
@@ -210,4 +229,23 @@
     html{
         font-size: 16px;
     }
+    .leaflet-container {
+        height: 250px;
+        width: 400px;
+        border-radius: 15px;
+        box-shadow: 5px 10px 10px black;
 }
+   .forecast-info {
+       background-color: rgba(120, 120, 120, 0.25);
+       padding: 7px;
+       border-radius: 15px;
+   }
+   .day-temp h3{
+    font-size: 13px;
+   }
+   .day-temp p{
+    font-size: 30px;
+   }
+}
+
+
