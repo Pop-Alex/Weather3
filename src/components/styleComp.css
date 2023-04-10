@@ -201,7 +201,7 @@
 }
 /*responsive*/
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:1100px) {
     .main ,.detail{
         position: relative;
         width: 100%;

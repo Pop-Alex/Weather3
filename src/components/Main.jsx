@@ -21,39 +21,35 @@ const Main = () => {
   return (
     
     <div className='main'>
-      
-      {data.weather ? null : 
+      <div className="main-info">
+        {data.weather ? null : 
         <CurrentLocation/>
         }
-        
-      
-      <div className="main-info">
         <div className='temp'>
           {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
         </div>
       
-      <div className='name'>
-        <p>{data.name}</p> 
-        {data.main && <button onClick={()=>handelFav()}><AiOutlineHeart/></button> }
-      {data.weather ? <p>{data.weather[0].main}</p> : null}
-      {/* { <div>
-      {data.weather ? <img
-              src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-              alt="icon" className='icon'
-            /> : null }
-     </div> } */}
-       </div>
-      </div>
-     
-    
-      {data.name && 
-      <div className="forecast">
-        <Forecast/>
-      </div>
-      }   
-       {data.weather ? <div className='map'>
-     <Map lat={data.coord.lat} lon={data.coord.lon}/>
-     </div>  : null}
+          <div className='name'>
+            <p>{data.name}</p> 
+              {data.main && <button onClick={()=>handelFav()}><AiOutlineHeart/></button> }
+              {data.weather ? <p>{data.weather[0].main}</p> : null}
+              { <div>
+                  {data.weather ? <img
+                    src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                    alt="icon" className='icon'
+                    /> : null }
+              </div> }
+            </div>
+          </div>
+              {data.name && 
+                <div className="forecast">
+                      <Forecast/>
+                 </div>
+              }   
+       {data.weather ? 
+          <div className='map'>
+              <Map lat={data.coord.lat} lon={data.coord.lon}/>
+          </div>  : null}
     </div>
 
 

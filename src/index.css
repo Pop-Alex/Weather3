@@ -38,28 +38,18 @@ code {
 .App{
   background: no-repeat center center/cover;
   height:950px;
-  transition: all 0.7s ease-in;
+  transition: all 1s ease-in;
 }
 .map {
   width: 50%;
   height: 20%;
   z-index: 11111;
 }
-@media screen and (max-height:300px) {
-  .App{
-    min-height: 40em;
-  }
-}
-@media screen and (max-width:600px) { 
+
+@media screen and (max-width:1200px) { 
   .App{
     transition: all 0.7s ease-in;
   }
-  body{
-  height: 100%;
   
-}
-  html{
-    height: 100%;
-  }
   }
 

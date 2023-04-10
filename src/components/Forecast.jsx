@@ -5,9 +5,9 @@ import '@splidejs/react-splide/css/sea-green';
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   
 const Forecast = () => {
-  const {data,forecast} = useContext( WeahterContext)
-  const dayInAWeek = new Date().getDay();
-  const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInAWeek));
+  const {forecast} = useContext( WeahterContext)
+  const dayWeek = new Date().getDay();
+  const forecastDays = WEEK_DAYS.slice(dayWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayWeek));
   return (
 
     <div className='forecast-box'>
@@ -16,7 +16,7 @@ const Forecast = () => {
         gap:"6rem"
       
         }}>
-        {forecast.list?.splice(0,7).map((fore,idx)=>{
+        {forecast.list?.slice(0,6).map((fore,idx)=>{
           return (
             <SplideSlide key={idx} >
               <div className='forecast-info'>
@@ -29,8 +29,8 @@ const Forecast = () => {
               /> 
               </div>
               <div className='forecast-temps'>
-                <p className='max'>Max temp: {Math.round(fore.main.temp_max)}°C </p>
-                <p className='min'>Min Temp: {Math.round(fore.main.temp_min)}°C</p>
+                <p className='max'>Max temp: {fore.main.temp_max.toFixed()}°C </p>
+                <p className='min'>Min Temp: {fore.main.temp_min.toFixed()}°C</p>
               </div>
               </div>
             </SplideSlide>
