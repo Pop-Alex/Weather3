@@ -32,9 +32,7 @@ export const WeahterContext = createContext()
       
     },[lat,long])
 
-
     
-   
     const getUserCoordinates = () => {
      navigator.geolocation.getCurrentPosition((position) => {
        const { coords } = position;

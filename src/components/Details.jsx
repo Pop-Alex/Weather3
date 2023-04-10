@@ -14,7 +14,7 @@ const Details = () => {
   return (
     <div className='detail'>
       <div className="input-section">
-        <input className='search-input' type="text" placeholder='Search'
+        <input className='search-input' type="text" placeholder='Search city...'
          value={location} onChange={(e)=>setLocation(e.target.value)}
         onKeyPress={searchLocation} />
         <button type='submit' className='btn-icon'  ><FcSearch/></button>

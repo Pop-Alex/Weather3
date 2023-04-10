@@ -1,4 +1,9 @@
 /*main*/
+::-webkit-input-placeholder {
+
+    color: black;
+
+}
 .spinner{
     display: flex;
     justify-content: center;
@@ -119,13 +124,11 @@
 .input-section input{
     width: 250px;
     padding: 10px;
-    background: transparent;
+    border-radius: 5px;
     border: none;
     
 }
-.search-input::placeholder{
-    color: white;
-}
+
 .input-section .btn-icon{
     font-size: 30px;
     
