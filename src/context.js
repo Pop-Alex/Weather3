@@ -26,29 +26,29 @@ export const WeahterContext = createContext()
 
   
  useEffect(()=>{
-    // getCurretnLocation()
-      getUserCoordinates()
+    //  getCurretnLocation()
+      // getUserCoordinates()
       setData(data)
       
     },[lat,long])
 
     
-    const getUserCoordinates = () => {
-     navigator.geolocation.getCurrentPosition((position) => {
-       const { coords } = position;
-       setLat(coords.latitude);
-       setLong(coords.longitude);
-     }, (error) => {
-       setError('Wrong')
-     })
+  //   const getUserCoordinates = () => {
+  //    navigator.geolocation.getCurrentPosition((position) => {
+  //      const { coords } = position;
+  //      setLat(coords.latitude);
+  //      setLong(coords.longitude);
+  //    }, (error) => {
+  //      setError('Wrong')
+  //    })
    
-  }
-  console.log(lat,long)
+  // }
+ 
   
-  // const getCurretnLocation = async ()=>{
-  //       const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d4aa1045d463622f5b83f1df0aa53b27&units=metric`)
+  //  const getCurretnLocation = async ()=>{
+  //        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d4aa1045d463622f5b83f1df0aa53b27&units=metric`)
   //       const datas = await res.json()
-  //       setCurrentLoc(datas)
+  //     setCurrentLoc(datas)
   //   }
    
     //fetch data

@@ -10,7 +10,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css/sea-green';
 const Details = () => {
   const {location,setLocation,searchLocation,data,fav,removefav} = useContext( WeahterContext)
-  console.log(fav)
+  
   return (
     <div className='detail'>
       <div className="input-section">
